@@ -1,0 +1,22 @@
+
+<p class='text-right'><button type="button" class="btn btn-default"><%= link_to '새글쓰기', new_post_path %></button>
+<p></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @board.title %></h3>
+        
+      </div>
+      <table class="table">
+        <% @board.posts.last(5).each do |post| %>
+        <tr>
+          <td><%= link_to post.title, post_path(post) %></td>
+          <td><%= post.user.try(:name) %></td>
+          <td><%= post.created_at.strftime("%A, %d %b %Y %l:%M %p") %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
